@@ -3,7 +3,14 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 enum EXPECTED_ENV_VARIABLES {
-  PORT = 'PORT'
+  PORT = 'PORT',
+  DB_TYPE = 'DB_TYPE',
+  DB_HOST = 'DB_HOST',
+  DB_PORT = 'DB_PORT',
+  DB_USER = 'DB_USER',
+  DB_PASSWORD = 'DB_PASSWORD',
+  DB_NAME = 'DB_NAME',
+  DB_SYNCRONIZE = 'DB_SYNCRONIZE'
 }
 
 export type IENV = {
@@ -11,7 +18,14 @@ export type IENV = {
 }
 
 let ENV: IENV = {
-  PORT: ''
+  PORT: '',
+  DB_TYPE: '',
+  DB_HOST: '',
+  DB_PORT: '',
+  DB_USER: '',
+  DB_PASSWORD: '',
+  DB_NAME: '',
+  DB_SYNCRONIZE: ''
 }
 
 const loadEnvVariables = () => {

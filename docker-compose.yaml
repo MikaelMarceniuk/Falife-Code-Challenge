@@ -11,6 +11,8 @@ services:
       - type: bind
         source: ./src
         target: /usr/src/app/src
+    depends_on:
+      - postgresdb
   postgresdb:
     image: postgres:14-alpine
     ports:
@@ -18,3 +20,4 @@ services:
     environment:
       POSTGRES_USER: code-challenge
       POSTGRES_PASSWORD: code-challenge
+      POSTGRES_DB: felife-code-challenge

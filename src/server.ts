@@ -7,13 +7,8 @@ class App {
 
   constructor() {
     this.app = express()
-    this.runConfigs()
     this.runMiddlewares()
     this.runRoutes()
-  }
-
-  runConfigs() {
-    configs.loadEnvVariables()
   }
 
   runMiddlewares() {
