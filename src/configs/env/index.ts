@@ -10,7 +10,8 @@ enum EXPECTED_ENV_VARIABLES {
   DB_USER = 'DB_USER',
   DB_PASSWORD = 'DB_PASSWORD',
   DB_NAME = 'DB_NAME',
-  DB_SYNCRONIZE = 'DB_SYNCRONIZE'
+  DB_SYNCRONIZE = 'DB_SYNCRONIZE',
+  DB_ENTITIES = 'DB_ENTITIES'
 }
 
 export type IENV = {
@@ -25,7 +26,8 @@ let ENV: IENV = {
   DB_USER: '',
   DB_PASSWORD: '',
   DB_NAME: '',
-  DB_SYNCRONIZE: ''
+  DB_SYNCRONIZE: '',
+  DB_ENTITIES: ''
 }
 
 const loadEnvVariables = () => {

@@ -8,7 +8,8 @@ const dbDataSource = new DataSource({
   username: ENV.DB_USER,
   password: ENV.DB_PASSWORD,
   database: ENV.DB_NAME,
-  synchronize: ENV.DB_SYNCRONIZE === 'true'
+  synchronize: ENV.DB_SYNCRONIZE === 'true',
+  entities: [ENV.DB_ENTITIES]
 })
 
 dbDataSource
