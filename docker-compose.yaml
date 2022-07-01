@@ -11,6 +11,9 @@ services:
       - type: bind
         source: ./src
         target: /usr/src/app/src
+      - type: bind
+        source: ./node_modules
+        target: /usr/src/app/node_modules
     depends_on:
       - postgresdb
   postgresdb:
