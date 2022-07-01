@@ -1,19 +1,15 @@
 import express from 'express'
 import configs from './configs'
 import morgan from 'morgan'
+import router from './router'
 
 class App {
   app
 
   constructor() {
     this.app = express()
-    this.runConfigs()
     this.runMiddlewares()
     this.runRoutes()
-  }
-
-  runConfigs() {
-    configs.loadEnvVariables()
   }
 
   runMiddlewares() {
@@ -24,7 +20,7 @@ class App {
   }
 
   runRoutes() {
-    this.app.get('/', (req, res) => res.send('Hello World!'))
+    router(this.app)
   }
 }
 
