@@ -1,4 +1,3 @@
-import { IsNull } from 'typeorm'
 import { User } from '../../entities/User.entity'
 import userRepository from './user.repository'
 

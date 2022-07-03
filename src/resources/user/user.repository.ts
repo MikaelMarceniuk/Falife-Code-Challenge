@@ -6,7 +6,7 @@ const userRepo = configs.dbDataSource.getRepository(User)
 
 export default {
   findAll: async () => {
-    return await userRepo.findAndCount()
+    return await userRepo.find()
   },
 
   findOneByUserId: async (id: string) => {

@@ -1,7 +1,9 @@
+import 'dotenv/config'
 import express from 'express'
 import configs from './configs'
 import morgan from 'morgan'
 import router from './router'
+import 'reflect-metadata'
 
 class App {
   app

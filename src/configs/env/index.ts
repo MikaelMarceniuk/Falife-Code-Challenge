@@ -1,7 +1,3 @@
-import dotenv from 'dotenv'
-
-dotenv.config()
-
 enum EXPECTED_ENV_VARIABLES {
   PORT = 'PORT',
   DB_TYPE = 'DB_TYPE',
@@ -46,5 +42,6 @@ const loadEnvVariables = () => {
       `Missing environment variables: ${missingVariables.join(', ')}`
     )
 }
+loadEnvVariables()
 
-export { ENV, loadEnvVariables }
+export default ENV
