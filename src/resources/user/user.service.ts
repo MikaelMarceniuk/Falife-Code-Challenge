@@ -56,9 +56,10 @@ export default {
 
   create: async (newUser: CreateUserDTO) => {
     const { isValid, errorMsg } = validateDtNascimento(newUser.dtNascimento)
-    if (!isValid) return errorMsg
+    if (!isValid) return new ApiResponse(false, errorMsg)
 
-    if (!isSexoValid(newUser.sexo)) return 'Sexo not valid, expecting M or F'
+    if (!isSexoValid(newUser.sexo))
+      return new ApiResponse(false, 'Sexo not valid, expecting M or F')
 
     // Creates user
     let dbNewUser = new User()
@@ -74,15 +75,16 @@ export default {
 
   update: async (userId: string, user: CreateUserDTO) => {
     const dbUser = await userRepository.findOneByUserId(userId)
-    if (!dbUser) return 'User not found'
+    if (!dbUser) return new ApiResponse(false, 'User not found')
 
     const { isValid, errorMsg } = validateDtNascimento(user.dtNascimento)
-    if (!isValid) return errorMsg
+    if (!isValid) return new ApiResponse(false, errorMsg)
 
-    if (!isSexoValid(user.sexo)) return 'Sexo not valid, expecting M or F'
+    if (!isSexoValid(user.sexo))
+      return new ApiResponse(false, 'Sexo not valid, expecting M or F')
 
     dbUser.name = user.name
-    dbUser.dtNascimento = moment.utc(user.dtNascimento, 'DD-MM-YYYY').toDate()
+    dbUser.dtNascimento = moment(user.dtNascimento, 'DD-MM-YYYY').toDate()
     dbUser.sexo = user.sexo
 
     await userRepository.update(dbUser)
