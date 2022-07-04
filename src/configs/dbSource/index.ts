@@ -1,4 +1,5 @@
 import { DataSource } from 'typeorm'
+import { User } from '../../entities/User.entity'
 import ENV from '../env'
 
 const NODE_ENV = process.env.NODE_ENV
@@ -19,11 +20,9 @@ const dbDataSource =
         password: ENV.DB_PASSWORD,
         database: ENV.DB_NAME,
         synchronize: ENV.DB_SYNCRONIZE === 'true',
-        encrypt: NODE_ENV == 'prod',
-        entities: [ENV.DB_ENTITIES]
+        encrypt: true,
+        entities: [User]
       })
-
-console.log('NODE_ENV', NODE_ENV)
 
 if (NODE_ENV != 'test') {
   dbDataSource
