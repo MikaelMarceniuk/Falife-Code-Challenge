@@ -19,8 +19,11 @@ const dbDataSource =
         password: ENV.DB_PASSWORD,
         database: ENV.DB_NAME,
         synchronize: ENV.DB_SYNCRONIZE === 'true',
+        encrypt: NODE_ENV == 'prod',
         entities: [ENV.DB_ENTITIES]
       })
+
+console.log('NODE_ENV', NODE_ENV)
 
 if (NODE_ENV != 'test') {
   dbDataSource
