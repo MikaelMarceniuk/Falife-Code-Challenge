@@ -1,3 +1,5 @@
+import { Request } from 'express'
+import CreateUserDTO from './dto/create-user.dto'
 import userService from './user.service'
 
 export default {
@@ -13,23 +15,26 @@ export default {
   },
 
   create: async (req: any, res: any) => {
-    const body = req.body
+    const body: CreateUserDTO = req.body
     const newUser = await userService.create(body)
 
     res.json(newUser)
   },
 
-  update: async (req: any, res: any) => {
+  update: async (req: Request, res: any) => {
     const userId = req.params.id
     const body = req.body
-    await userService.update(userId, body)
+    const response = await userService.update(userId, body)
 
-    res.json()
+    response ? res.json(response) : res.status(204)
   },
 
-  delete: async (req: any, res: any) => {
-    await userService.softDelete(req.params.id)
+  delete: async (req: Request, res: any) => {
+    const resp = await userService.delete(
+      req.params.id,
+      req.query.soft as string
+    )
 
-    res.json()
+    res.send(resp)
   }
 }

@@ -16,7 +16,7 @@ export default {
   findOneByEmail: async (email: string, withDeleted?: boolean) => {
     return await userRepo.findOne({
       where: {
-        email
+        // email
       },
       withDeleted
     })
@@ -36,5 +36,9 @@ export default {
 
   softDelete: async (id: string) => {
     return await userRepo.softDelete(id)
+  },
+
+  delete: async (id: string) => {
+    return await userRepo.delete(id)
   }
 }
